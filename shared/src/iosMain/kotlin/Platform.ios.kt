@@ -1,5 +1,3 @@
-package site.pnpl.mira.ip
-
 import platform.UIKit.UIDevice
 
 class IOSPlatform: Platform {

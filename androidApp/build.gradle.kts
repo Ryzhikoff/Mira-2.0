@@ -5,10 +5,10 @@ plugins {
 }
 
 android {
-    namespace = "site.pnpl.mira.ip.android"
+    namespace = "site.pnpl.mira.ip"
     compileSdk = 34
     defaultConfig {
-        applicationId = "site.pnpl.mira.ip.android"
+        applicationId = "site.pnpl.mira.ip"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -38,9 +38,9 @@ android {
 
 dependencies {
     implementation(projects.shared)
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.compose.material3)
-    implementation(libs.androidx.activity.compose)
-    debugImplementation(libs.compose.ui.tooling)
+//    implementation(libs.compose.ui)
+//    implementation(libs.compose.ui.tooling.preview)
+//    implementation(libs.compose.material3)
+//    implementation(libs.androidx.activity.compose)
+//    debugImplementation(libs.compose.ui.tooling)
 }

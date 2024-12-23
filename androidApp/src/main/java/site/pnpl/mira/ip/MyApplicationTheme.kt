@@ -1,4 +1,4 @@
-package site.pnpl.mira.ip.android
+package site.pnpl.mira.ip
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape

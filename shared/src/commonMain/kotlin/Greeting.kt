@@ -1,5 +1,3 @@
-package site.pnpl.mira.ip
-
 class Greeting {
     private val platform: Platform = getPlatform()
 
