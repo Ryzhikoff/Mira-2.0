@@ -7,7 +7,8 @@ cornercutlinearlayoutVersion = "1.0.5"
 koinCore = "4.0.0"
 konfettiXml = "2.0.4"
 #kotlin = "1.9.23"
-kotlin = "2.0.21"
+#kotlin = "2.0.21"
+kotlin = "2.1.0"
 kotlinxDatetime = "0.6.1"
 ktorClientCore = "2.3.11"
 appcompat = "1.7.0"
@@ -23,7 +24,7 @@ espressoCore = "3.5.1"
 material = "1.12.0"
 googleGmsGoogleServices = "4.4.2"
 firebaseConfig = "22.0.1"
-kotlinxCoroutinesCore = "1.8.0"
+kotlinxCoroutinesCore = "1.9.0"
 navigationFragment = "2.8.5"
 navigationUi = "2.8.5"
 navigationFragmentKtx = "2.8.5"
@@ -37,6 +38,7 @@ compose-plugin="1.7.1"
 koin-compose="4.0.0"
 firebaseCommonKtx = "21.0.0"
 sketch = "4.0.0"
+sqlDelight = "2.0.1"
 
 [libraries]
 android-loading-dots = { module = "com.github.razaghimahdi:Android-Loading-Dots", version.ref = "androidLoadingDots" }
@@ -86,6 +88,10 @@ sketch-compose = { module = "io.github.panpf.sketch4:sketch-compose", version.re
 sketch-compose-resources = { module = "io.github.panpf.sketch4:sketch-compose-resources", version.ref = "sketch" }
 sketch-extensions-compose-resources = { module = "io.github.panpf.sketch4:sketch-extensions-compose-resources", version.ref = "sketch" }
 
+sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
+sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
+sqldelight-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqlDelight" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
@@ -96,3 +102,5 @@ googleFirebaseCrashlytics = { id = "com.google.firebase.crashlytics", version.re
 
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
