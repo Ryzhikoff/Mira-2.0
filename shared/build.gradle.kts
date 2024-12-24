@@ -44,15 +44,46 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.kotlinx.coroutines.core)
+
             with(compose) {
                 implementation(ui)
                 implementation(foundation)
-                implementation(material)
                 implementation(material3)
                 implementation(runtime)
                 implementation(components.resources)
             }
+
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.composeVM)
+            implementation(libs.koin.compose.navigation)
+
+            implementation(libs.sketch.compose)
+            implementation(libs.sketch.animated.gif)
+            implementation(libs.sketch.compose.resources)
+            implementation(libs.sketch.extensions.compose.resources)
         }
+
+        androidMain.dependencies {
+            implementation(libs.ktor.client.android)
+            implementation(libs.koin.android)
+            implementation(libs.kotlinx.coroutines.core)
+        }
+
+        iosMain.dependencies {
+            implementation(compose.ui)
+            implementation(compose.foundation)
+            implementation(compose.material)
+            implementation(compose.material3)
+            implementation(compose.runtime)
+            implementation(libs.ktor.client.darwin)
+        }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
