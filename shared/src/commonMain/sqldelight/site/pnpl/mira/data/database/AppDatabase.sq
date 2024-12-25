@@ -1,0 +1,101 @@
+-- ------------------------------- CHECK_IN ------------------------------------------------------------------
+
+CREATE TABLE check_in_table (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    emotion_id INTEGER NOT NULL,
+    factor_id INTEGER NOT NULL,
+    exercises_id INTEGER NOT NULL DEFAULT 0,
+    note TEXT NOT NULL DEFAULT "",
+    created_at TEXT NOT NULL,
+    created_at_long INTEGER NOT NULL,
+    edited_at TEXT NOT NULL DEFAULT "",
+    is_synchronized INTEGER NOT NULL DEFAULT 0
+);
+
+-- Индекс для быстрого поиска по created_at
+CREATE INDEX index_check_in_table_created_at ON check_in_table (created_at);
+
+-- Индекс для поиска по emotion_id
+CREATE INDEX index_check_in_table_emotion_id ON check_in_table (emotion_id);
+
+-- Получить все записи
+selectAllCheckIns:
+SELECT * FROM check_in_table;
+
+-- Вставить новую запись
+insertCheckIn:
+INSERT INTO check_in_table (
+    emotion_id, factor_id, exercises_id, note, created_at, created_at_long, edited_at, is_synchronized
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
+-- Удалить все записи
+deleteAllCheckIns:
+DELETE FROM check_in_table;
+
+-- Получить записи за период
+selectCheckInsForPeriod:
+SELECT * FROM check_in_table
+WHERE date(created_at) BETWEEN ? AND ?;
+
+-- Получить записи за период и по factor_id
+selectCheckInsForPeriodByFactor:
+SELECT * FROM check_in_table
+WHERE date(created_at) BETWEEN ? AND ?
+AND factor_id = ?;
+
+-- ------------------------------- EMOTION ------------------------------------------------------------------
+
+CREATE TABLE emotion_table (
+    id INTEGER NOT NULL PRIMARY KEY, -- autoGenerate = false
+    name TEXT NOT NULL,
+    name_genitive TEXT NOT NULL,
+    remote_emoji_link TEXT NOT NULL,
+    local_emoji_link TEXT NOT NULL,
+    is_positive INTEGER NOT NULL,
+    is_opened INTEGER NOT NULL
+);
+-- Индекс для ускорения поиска по полю is_opened
+CREATE INDEX index_emotion_table_is_opened ON emotion_table (is_opened);
+
+-- Уникальный индекс для поля id (хотя PRIMARY KEY уже обеспечивает уникальность)
+CREATE UNIQUE INDEX index_emotion_table_id ON emotion_table (id);
+
+-- Получить все эмоции
+selectAllEmotions:
+SELECT * FROM emotion_table;
+
+-- Вставить список эмоций
+insertEmotion:
+INSERT INTO emotion_table (
+    id, name, name_genitive, remote_emoji_link, local_emoji_link, is_positive, is_opened
+) VALUES (?, ?, ?, ?, ?, ?, ?);
+
+-- Обновить флаг is_opened
+updateEmotionOpenedFlag:
+UPDATE emotion_table
+SET is_opened = ?
+WHERE id = ?;
+
+-- Удалить эмоции
+deleteEmotions:
+DELETE FROM emotion_table
+WHERE id IN ?;
+
+-- ------------------------------- EXERCISE ------------------------------------------------------------------
+
+CREATE TABLE exercise_table (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    exercise_id INTEGER NOT NULL UNIQUE,
+    is_opened INTEGER NOT NULL
+);
+
+-- Вставить упражнение
+insertExercise:
+INSERT INTO exercise_table (
+    exercise_id, is_opened
+) VALUES (?, ?);
+
+-- Получить упражнение по id
+selectExerciseById:
+SELECT * FROM exercise_table
+WHERE exercise_id = ?;

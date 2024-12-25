@@ -1,5 +1,0 @@
-CREATE TABLE exercise_table (
-    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    exercise_id INTEGER NOT NULL UNIQUE,
-    is_opened INTEGER NOT NULL
-);
