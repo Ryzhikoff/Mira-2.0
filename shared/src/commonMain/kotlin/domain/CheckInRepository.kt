@@ -4,6 +4,8 @@ import models.CheckIn
 
 interface CheckInRepository {
 
+    suspend fun getAllCheckIns() : List<CheckIn>
+
     suspend fun insertCheckIn(checkIn: CheckIn)
 
     suspend fun getCheckInForPeriod(startPeriod: Long, endPeriod: Long): List<CheckIn>
