@@ -17,7 +17,7 @@ internal class DatabaseRepositoryImpl(
     override suspend fun getCheckInForPeriod(
         startPeriod: Long,
         endPeriod: Long
-    ): List<CheckIn> = database.getCheckInForPeriod(startPeriod, endPeriod)
+    ): List<CheckIn> = database.getCheckInForPeriod(startPeriod, endPeriod).map()
 
     override suspend fun getCheckInForPeriodByFactorId(
         startPeriod: Long,
