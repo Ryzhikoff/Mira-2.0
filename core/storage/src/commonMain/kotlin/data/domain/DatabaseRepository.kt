@@ -11,7 +11,7 @@ interface DatabaseRepository {
 
     suspend fun getCheckInForPeriodByFactorId(startPeriod: Long, endPeriod: Long, factorId: Int): List<CheckIn>
 
-    suspend fun insertListOfCheckIns(list: List<CheckIn>)
+    suspend fun insertListOfCheckIns(checkIns: List<CheckIn>)
 
     suspend fun deleteListOfCheckIns(checkIns: List<CheckIn>)
 

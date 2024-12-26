@@ -32,6 +32,11 @@ INSERT INTO check_in_table (
 deleteAllCheckIns:
 DELETE FROM check_in_table;
 
+-- Удалить одну запись
+deleteCheckInById:
+DELETE FROM check_in_table
+WHERE id = ?;
+
 -- Получить записи за период
 selectCheckInsForPeriod:
 SELECT * FROM check_in_table
