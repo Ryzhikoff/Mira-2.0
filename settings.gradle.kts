@@ -17,3 +17,6 @@ dependencyResolutionManagement {
 rootProject.name = "Mira"
 include(":androidApp")
 include(":shared")
+include(":core:storage")
+include(":core:common")
+include(":core:models")

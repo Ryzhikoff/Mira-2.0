@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.jetbrains.compose)
-    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
@@ -70,14 +69,14 @@ kotlin {
             implementation(libs.sketch.compose.resources)
             implementation(libs.sketch.extensions.compose.resources)
 
-            implementation(libs.sqldelight.runtime)
+            implementation(projects.core.models)
+            implementation(projects.core.common)
         }
 
         androidMain.dependencies {
             implementation(libs.ktor.client.android)
             implementation(libs.koin.android)
             implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.sqldelight.android.driver)
         }
 
         iosMain.dependencies {
@@ -87,7 +86,6 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.runtime)
             implementation(libs.ktor.client.darwin)
-            implementation(libs.sqldelight.native.driver)
         }
 
         commonTest.dependencies {
@@ -105,14 +103,5 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-    }
-}
-
-sqldelight {
-    databases {
-        create("AppDatabase") {
-            packageName.set("site.pnpl.mira.data.database")
-            schemaOutputDirectory.set(file("src/commonMain/sqldelight/schema"))
-        }
     }
 }
