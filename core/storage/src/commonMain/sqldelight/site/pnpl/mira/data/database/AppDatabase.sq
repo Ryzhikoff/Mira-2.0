@@ -48,6 +48,16 @@ SELECT * FROM check_in_table
 WHERE date(created_at) BETWEEN ? AND ?
 AND factor_id = ?;
 
+-- получить количество чекинов
+countAllCheckIns:
+SELECT COUNT(*) AS record_count FROM check_in_table;
+
+-- получить количество чекинов с фактор_ид
+countCheckInsByFactorId:
+SELECT COUNT(*) AS record_count
+FROM check_in_table
+WHERE factor_id = ?;
+
 -- ------------------------------- EMOTION ------------------------------------------------------------------
 
 CREATE TABLE emotion_table (
