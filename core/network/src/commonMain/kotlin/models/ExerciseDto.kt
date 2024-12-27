@@ -1,12 +1,7 @@
-package models.dto.exercises
+package models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import models.dto.emotions.EmotionDtoItem
-import site.pnpl.mira.data.remote.dto.exercises.ScreenDto
-
-@Serializable
-class ExerciseDtoList : ArrayList<ExerciseDto>()
 
 @Serializable
 data class ExerciseDto(
@@ -21,7 +16,7 @@ data class ExerciseDto(
     @SerialName("edited_by")
     val editedBy: EditedBy,
     @SerialName("emotions")
-    val emotions: List<EmotionDtoItem>,
+    val emotions: List<EmotionDto>,
     @SerialName("id")
     val id: Int,
     @SerialName("is_intro")

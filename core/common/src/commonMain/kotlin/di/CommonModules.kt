@@ -10,6 +10,7 @@ internal val commonModule = module {
 }
 
 val commonModules = listOf(
+    commonModule,
     storageModule,
-    commonModule
+    networkModule,
 )

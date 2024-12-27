@@ -1,13 +1,10 @@
-package models.dto.emotions
+package models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import site.pnpl.mira.data.remote.dto.emotions.CreatedBy
-import site.pnpl.mira.data.remote.dto.emotions.EditedBy
-import site.pnpl.mira.data.remote.dto.emotions.ExerciseDto
 
 @Serializable
-data class EmotionDtoItem(
+data class EmotionDto(
     @SerialName("name")
     val name: String,
     @SerialName("name_genitive")
@@ -27,7 +24,18 @@ data class EmotionDtoItem(
     @SerialName("edited_by")
     val editedBy: EditedBy,
     @SerialName("exercises")
-    val exerciseDtos: List<ExerciseDto>,
+    val exercisePreviewDtos: List<ExercisePreviewDto>,
     @SerialName("id")
     val id: Int
 )
+
+fun EmotionDto.toEmotion() =
+    Emotion(
+        id = id,
+        name = name,
+        nameGenitive = nameGenitive,
+        isPositive = isPositive,
+        remoteEmojiLink = emojiLink,
+        emojiLink = emojiLink,
+        isOpened = false,
+    )
