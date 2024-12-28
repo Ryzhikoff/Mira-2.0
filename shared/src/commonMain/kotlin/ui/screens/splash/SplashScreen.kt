@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import com.github.panpf.sketch.AsyncImage
 import com.github.panpf.sketch.fetch.newComposeResourceUri
 import domain.CheckInRepository
+import domain.EmotionRepository
 import mira.shared.generated.resources.Res
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.koin.compose.koinInject
@@ -19,7 +20,8 @@ import ui.themes.Colors
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun SplashScreen(
-    checkInRepository: CheckInRepository = koinInject()
+    checkInRepository: CheckInRepository = koinInject(),
+    emotionRepository: EmotionRepository = koinInject(),
 ) {
     Box {
 
@@ -38,6 +40,8 @@ fun SplashScreen(
         checkIns.forEach {
             println(it)
         }
+
+        println(emotionRepository.getEmotionsFromApi())
 
     }
 }

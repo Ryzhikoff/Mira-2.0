@@ -10,6 +10,7 @@ konfettiXml = "2.0.4"
 #kotlin = "2.0.21"
 kotlin = "2.1.0"
 kotlinxDatetime = "0.6.1"
+kotlinxSerializationJson = "1.8.0-RC"
 ktorClientCore = "2.3.11"
 appcompat = "1.7.0"
 mobileads = "7.3.0"
@@ -51,6 +52,7 @@ koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinCore
 konfetti-xml = { module = "nl.dionsegijn:konfetti-xml", version.ref = "konfettiXml" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktorClientCore" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorClientCore" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientCore" }

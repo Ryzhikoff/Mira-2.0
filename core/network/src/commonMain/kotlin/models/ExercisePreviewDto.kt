@@ -18,5 +18,5 @@ data class ExercisePreviewDto(
     @SerialName("published")
     val published: Boolean,
     @SerialName("title")
-    val title: String
+    val title: String?
 )

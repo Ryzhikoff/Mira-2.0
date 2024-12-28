@@ -5,6 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class EmotionDto(
+    @SerialName("id")
+    val id: Int,
     @SerialName("name")
     val name: String,
     @SerialName("name_genitive")
@@ -13,20 +15,10 @@ data class EmotionDto(
     val emojiLink: String,
     @SerialName("is_positive")
     val isPositive: Boolean,
-    @SerialName("created_at")
-    val createdAt: String,
-    @SerialName("created_by")
-    val createdBy: CreatedBy,
     @SerialName("description")
     val description: String,
-    @SerialName("edited_at")
-    val editedAt: String,
-    @SerialName("edited_by")
-    val editedBy: EditedBy,
     @SerialName("exercises")
     val exercisePreviewDtos: List<ExercisePreviewDto>,
-    @SerialName("id")
-    val id: Int
 )
 
 fun EmotionDto.toEmotion() =

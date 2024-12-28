@@ -1,10 +1,11 @@
 package domain
 
+import models.ApiResponse
 import models.Emotion
 
 interface EmotionRepository {
 
-    suspend fun getEmotionsFromApi(): List<Emotion>
+    suspend fun getEmotionsFromApi(): ApiResponse
 
     suspend fun getEmotionsFromDb(): List<Emotion>
 
