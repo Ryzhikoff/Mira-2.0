@@ -1,7 +1,7 @@
 package data
 
 import data.ApiConstants.GET_EMOTIONS
-import domain.NetworkRepository
+import domain.ApiRepository
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -11,9 +11,9 @@ import models.Emotion
 import models.EmotionDto
 import models.toEmotion
 
-internal class NetworkRepositoryImpl(
+internal class ApiRepositoryImpl(
     private val client: HttpClient,
-) : NetworkRepository {
+) : ApiRepository {
 
     override suspend fun getEmotions(): ApiResponse =
         getRequest<List<EmotionDto>, List<Emotion>>(

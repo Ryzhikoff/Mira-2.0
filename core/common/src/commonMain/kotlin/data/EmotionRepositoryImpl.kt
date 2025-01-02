@@ -1,31 +1,33 @@
 package data
 
+import data.domain.DatabaseRepository
 import domain.EmotionRepository
-import domain.NetworkRepository
+import domain.ApiRepository
 import models.ApiResponse
 import models.Emotion
 
 internal class EmotionRepositoryImpl(
-    private val networkRepository: NetworkRepository,
+    private val api: ApiRepository,
+    private val database: DatabaseRepository,
 ) : EmotionRepository {
 
     override suspend fun getEmotionsFromApi(): ApiResponse {
-        return networkRepository.getEmotions()
+        return api.getEmotions()
     }
 
     override suspend fun getEmotionsFromDb(): List<Emotion> {
-        TODO("Not yet implemented")
+        return database.getEmotions()
     }
 
     override suspend fun writeEmotionToDb(emotion: Emotion) {
-        TODO("Not yet implemented")
+        database.insertEmotion(emotion)
     }
 
     override suspend fun deleteEmotions(emotions: List<Emotion>) {
-        TODO("Not yet implemented")
+        database.deleteEmotions(emotions)
     }
 
     override suspend fun openEmotion(emotionId: Int) {
-        TODO("Not yet implemented")
+        database.openEmotion(emotionId)
     }
 }

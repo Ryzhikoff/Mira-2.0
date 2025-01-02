@@ -24,7 +24,6 @@ fun SplashScreen(
     emotionRepository: EmotionRepository = koinInject(),
 ) {
     Box {
-
         Box(modifier = Modifier.fillMaxSize().background(color = Colors.white)) {
             AsyncImage(
                 modifier = Modifier.align(Alignment.Center),

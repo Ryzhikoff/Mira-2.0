@@ -2,7 +2,7 @@ package domain
 
 import models.ApiResponse
 
-interface NetworkRepository {
+interface ApiRepository {
 
     suspend fun getEmotions(): ApiResponse
 
