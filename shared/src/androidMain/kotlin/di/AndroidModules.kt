@@ -1,5 +1,3 @@
 package di
 
-val androidModules = listOf(
-    androidCommonModules
-)
+val androidModules = androidCommonModules

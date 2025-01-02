@@ -12,6 +12,7 @@ import com.github.panpf.sketch.AsyncImage
 import com.github.panpf.sketch.fetch.newComposeResourceUri
 import domain.CheckInRepository
 import domain.EmotionRepository
+import domain.PrepareEmotionsUseCase
 import mira.shared.generated.resources.Res
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.koin.compose.koinInject
@@ -22,6 +23,7 @@ import ui.themes.Colors
 fun SplashScreen(
     checkInRepository: CheckInRepository = koinInject(),
     emotionRepository: EmotionRepository = koinInject(),
+    prepareEmotionsUseCase: PrepareEmotionsUseCase = koinInject(),
 ) {
     Box {
         Box(modifier = Modifier.fillMaxSize().background(color = Colors.white)) {
@@ -38,9 +40,12 @@ fun SplashScreen(
         println("size: ${checkIns.size}")
         checkIns.forEach {
             println(it)
-        }
 
-        println(emotionRepository.getEmotionsFromApi())
+        }
+        prepareEmotionsUseCase{
+            println("prepareEmotionsUseCase $it")
+        }
+//        println(emotionRepository.getEmotionsFromApi())
 
     }
 }

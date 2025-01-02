@@ -1,28 +1,28 @@
 package models
 
 
-sealed class ApiResponse(open val result: Any) {
+sealed class ApiResponse<out T> {
+    data object Init : ApiResponse<Nothing>()
+    data object Loading : ApiResponse<Nothing>()
+    data class Success<out T>(val result: T) : ApiResponse<T>()
 
-    data object Init : ApiResponse(Any())
-    data object Loading : ApiResponse(Any())
-    data class Success(override val result: Any) : ApiResponse(result)
-
-    sealed class Error(open val errorBody: String) : ApiResponse(errorBody) {
+    sealed class Error(open val errorBody: String) : ApiResponse<Nothing>() {
         data class Auth(override val errorBody: String) : Error(errorBody)
         data class Internal(val code: Int, override val errorBody: String) : Error("Status code: $code. Error: $errorBody")
         data class Connection(override val errorBody: String) : Error(errorBody)
     }
-
 }
 
-public inline fun ApiResponse.doOnSuccess(action: (Any) -> Unit) {
-    if (this is ApiResponse.Success) {
+public inline fun <reified T : Any> ApiResponse<T>.doOnSuccess(action: (T) -> Unit) {
+    if (this is ApiResponse.Success<*> && result is T) {
         action(result)
+    } else {
+        throw Error("Expected ApiResponse.Success<${T::class.simpleName}>, but got $this")
     }
 }
 
-public inline fun ApiResponse.doOnError(action: (Any) -> Unit) {
+public inline fun ApiResponse<*>.doOnError(action: (String) -> Unit) {
     if (this is ApiResponse.Error) {
-        action(result)
+        action(errorBody)
     }
 }

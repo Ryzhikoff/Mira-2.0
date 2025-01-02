@@ -5,7 +5,7 @@ import models.Emotion
 
 interface EmotionRepository {
 
-    suspend fun getEmotionsFromApi(): ApiResponse
+    suspend fun getEmotionsFromApi(): ApiResponse<List<Emotion>>
 
     suspend fun getEmotionsFromDb(): List<Emotion>
 

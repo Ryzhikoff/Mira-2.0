@@ -1,8 +1,5 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-//    alias(libs.plugins.kotlinCocoapods)
-    alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.sqldelight)
     alias(libs.plugins.androidLibrary)
 }
 
@@ -21,17 +18,9 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.kotlinx.coroutines.core)
-            implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.6.0")
-            implementation(libs.koin.core)
-            implementation(projects.core.models)
-            implementation(projects.core.storage)
-            implementation(projects.core.network)
-            implementation(projects.core.utils)
         }
 
         androidMain.dependencies {
-            implementation(libs.koin.android)
         }
 
         iosMain.dependencies {

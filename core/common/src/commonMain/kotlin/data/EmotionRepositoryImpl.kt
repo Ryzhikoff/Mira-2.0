@@ -11,7 +11,7 @@ internal class EmotionRepositoryImpl(
     private val database: DatabaseRepository,
 ) : EmotionRepository {
 
-    override suspend fun getEmotionsFromApi(): ApiResponse {
+    override suspend fun getEmotionsFromApi(): ApiResponse<List<Emotion>> {
         return api.getEmotions()
     }
 
