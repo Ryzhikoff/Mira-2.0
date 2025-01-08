@@ -1,5 +1,8 @@
 package domain
 
+import io.github.vinceglb.filekit.core.FileKit
+import kotlinx.io.Buffer
+import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 import kotlinx.io.files.SystemTemporaryDirectory
 import models.ApiResponse
@@ -17,30 +20,51 @@ class PrepareEmotionsUseCase(
         val apiEmotions: List<Emotion> = getEmotionsFromApi()
         val savedEmotions: List<Emotion> = emotionRepository.getEmotionsFromDb()
 
-//        if (apiEmotions.isEmpty()) {
-//            onComplete(false)
-//            return
-//        }
+        if (apiEmotions.isEmpty()) {
+            onComplete(false)
+            return
+        }
 
         println(apiEmotions)
-        println("ddddddddddddddddddddddddddddddddd")
-        println("SystemTemporaryDirectory.name: ${SystemTemporaryDirectory.name}")
-        println("SystemTemporaryDirectory.isAbsolute: ${SystemTemporaryDirectory.isAbsolute}")
-        println("SystemTemporaryDirectory: $SystemTemporaryDirectory")
+
+        apiEmotions.forEach { emotion ->
+            if (!savedEmotions.contains(emotion) || !isEmotionDownloaded(emotion)) {
+                val result = downloadAndSaveEmotion(emotion)
+                println("${emotion.name} result $result")
+            }
+        }
+
         onComplete(true)
-//
-//        apiEmotions.forEach { emotion ->
-//            if (!savedEmotions.contains(emotion) || !isEmotionDownloaded(emotion)) {
-//                downloadAndSaveEmotion(emotion)
-//            }
-//        }
 
     }
 
     private suspend fun downloadAndSaveEmotion(emotion: Emotion): Boolean {
         val byteArray: ByteArray? = downloadManager.download(emotion.remoteEmojiLink)
         if (byteArray != null) {
-            val filePath = deviceStorage.getPathForEmotion("${emotion.name}.svg")
+
+            val nameForSaved = emotion.remoteEmojiLink
+                .split("/")
+                .last()
+                .split(".")[0]
+
+            val extension = emotion.remoteEmojiLink
+                .split("/")
+                .last()
+                .split(".")[1]
+
+//            val filePCath = deviceStorage.getPathForEmotion()
+
+            val file = FileKit.saveFile(
+                bytes = byteArray,
+                baseName = nameForSaved,
+                extension = extension,
+//                initialDirectory = "emotion"
+            )
+
+            println(file?.path)
+
+//            Buffer().write(byteArray)
+//
 //            File(filePath).outputStream().use { outputStream ->
 //                val writer = outputStream.toOutput()
 //                writer.writeFully(response)

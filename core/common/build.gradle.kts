@@ -23,6 +23,9 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.io.core)
             implementation(libs.koin.core)
+
+            implementation(libs.filekit.core)
+
             implementation(projects.core.models)
             implementation(projects.core.storage)
             implementation(projects.core.network)
