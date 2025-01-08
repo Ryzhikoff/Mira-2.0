@@ -17,6 +17,7 @@ kotlin = "2.1.0"
 
 koinCore = "4.0.0"
 kotlinxDatetime = "0.6.1"
+kotlinxIoCore = "0.6.0"
 kotlinxSerializationJson = "1.8.0-RC"
 ktorClientCore = "2.3.11"
 appcompat = "1.7.0"
@@ -44,7 +45,7 @@ compose-plugin="1.7.1"
 koin-compose="4.0.0"
 firebaseCommonKtx = "21.0.0"
 sketch = "4.0.0"
-sqlDelight = "2.0.1"
+sqlDelight = "2.0.2"
 
 [libraries]
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
@@ -64,6 +65,7 @@ koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinCore" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinCore" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinx-io-core = { module = "org.jetbrains.kotlinx:kotlinx-io-core", version.ref = "kotlinxIoCore" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktorClientCore" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorClientCore" }

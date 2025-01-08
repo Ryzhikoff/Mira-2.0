@@ -23,13 +23,13 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            linkerOpts.add("-lsqlite3")
         }
     }
     
     sourceSets {
         
         commonMain.dependencies {
-
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
 
@@ -39,7 +39,6 @@ kotlin {
                 implementation(material3)
                 implementation(runtime)
                 implementation(components.resources)
-                implementation(uiTooling)
             }
 
 //            implementation(libs.androidx.lifecycle.viewmodel)
@@ -67,6 +66,7 @@ kotlin {
 
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            implementation(libs.sqldelight.native.driver)
         }
     }
 }

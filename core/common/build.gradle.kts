@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
 //    alias(libs.plugins.kotlinCocoapods)
@@ -9,10 +11,8 @@ plugins {
 kotlin {
 
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
     iosX64()
@@ -22,7 +22,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
-            implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.6.0")
+            implementation(libs.kotlinx.io.core)
             implementation(libs.koin.core)
             implementation(projects.core.models)
             implementation(projects.core.storage)
@@ -46,7 +46,7 @@ android {
         minSdk = 24
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
