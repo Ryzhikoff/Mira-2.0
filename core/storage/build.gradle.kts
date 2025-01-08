@@ -22,7 +22,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "CoreStorage"
             isStatic = true
             linkerOpts.add("-lsqlite3")
         }
@@ -54,6 +54,7 @@ sqldelight {
             schemaOutputDirectory.set(file("src/commonMain/sqldelight/schema"))
         }
     }
+    linkSqlite.set(true)
 }
 
 android {

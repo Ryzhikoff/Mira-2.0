@@ -23,12 +23,10 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
-            linkerOpts.add("-lsqlite3")
         }
     }
     
     sourceSets {
-        
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
@@ -101,4 +99,3 @@ android {
 dependencies {
     debugImplementation(compose.uiTooling)
 }
-
